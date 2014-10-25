@@ -20,3 +20,8 @@ Specs
   * Keep track of current id
   * When /play-pause is set to "playing" and playlist has an id the same as current id, start playing it (using youtube-dl and mplayer/vlc)
   * When the player stops, increment current id and go to the previous step
+* Dependencies:
+  * Sinatra
+  * Slim
+  * data_mapper (and an adapter, etc)
+  
