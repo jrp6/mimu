@@ -21,7 +21,7 @@ Specs
   * When /play-pause is set to "playing" and playlist has an unplayed video, start playing it (using youtube-dl and mplayer/vlc)
   * When the player stops, increment index and go to the previous step
 * Communication between the front- and the backend
-  * D-Bus (on the system bus)
+  * D-Bus (on the session bus) (NB! If you want to use the system bus, you must configure it yourself)
 	* Service fi.ouka.edu.lyseo.mimu
 	* Interface fi.ouka.edu.lyseo.mimu.playlist
 	  * Methods:
