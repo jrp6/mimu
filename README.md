@@ -15,13 +15,26 @@ Specs
 * /play-pause, depending on method:
   * GET: "playing" if playing, "paused" if paused
   * POST: start playing if "play", pause if "pause"
-* Playlist, kept in memory (sqlite?)
-  * Rows: id, title (fetch using youtube API), ytid
-  * Keep track of current id
-  * When /play-pause is set to "playing" and playlist has an id the same as current id, start playing it (using youtube-dl and mplayer/vlc)
-  * When the player stops, increment current id and go to the previous step
+* Playlist, kept in backend memory
+  * ytid
+  * Keep track of current array index
+  * When /play-pause is set to "playing" and playlist has an unplayed video, start playing it (using youtube-dl and mplayer/vlc)
+  * When the player stops, increment index and go to the previous step
+* Communication between the front- and the backend
+  * D-Bus (on the system bus)
+	* Service fi.ouka.edu.lyseo.mimu
+	* Interface fi.ouka.edu.lyseo.mimu.playlist
+	  * Methods:
+		* play (bool: start playing if true, stop if false)
+		* queue (string: add specified ytid to end of the playlist)
+		* getQueueLength (return playlist length, i.e. the largest array index + 1)
+		* getYtid (int: get the ytid that corresponds with the specified index)
+	  * Signals:
+		* nowPlaying (string: ytid that has started playing)
+		* statusPlaying (bool: the status has changed to playing/stopped (true/false)
+		* errorOccurred (string: error description)
 * Dependencies:
   * Sinatra
   * Slim
-  * data_mapper (and an adapter, etc)
+  * ruby-dbus
   
