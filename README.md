@@ -3,6 +3,16 @@ mimu
 
 Web app that makes the computer running the app play youtube videos in the background
 
+To run
+------
+Run ./mimud.rb, preferably within tmux/screen
+
+TODO
+----
+* A Frontend
+* Emit signals when they should be (Trivial except for errorOccurred)
+* Stop playing instantly when status changes to paused (currently plays current video to the end
+
 Specs
 -----
 

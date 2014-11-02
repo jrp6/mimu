@@ -60,8 +60,11 @@ service.export(obj)
 Thread.new do
   loop do
     if obj.playing
-      STDERR.puts "TODO: play videos"
-      sleep(1)
+      if obj.playlist.length == 0
+        obj.playing = false
+      else
+        system("vlc --play-and-exit $(youtube-dl -g \"https://www.youtube.com/watch?v=#{obj.playlist.shift}\")")
+      end #if
     else
       sleep(1)
     end #if
