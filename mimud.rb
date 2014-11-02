@@ -1,6 +1,8 @@
 #!/usr/bin/ruby
 require 'dbus'
+require 'thread'
 require 'optparse'
+Thread.abort_on_exception = true
 
 $options = {}
 OptionParser.new do |opts|
@@ -15,6 +17,10 @@ class Player < DBus::Object
     super(o)
     @playlist = []
   end #def
+
+  attr_accessor :playing
+  attr_accessor :playlist
+  
   dbus_interface "fi.ouka.edu.lyseo.mimu.playlist" do
     dbus_method :play, "in shouldPlay:b" do |shouldPlay|
       @playing = shouldPlay
@@ -50,6 +56,17 @@ service = bus.request_service("fi.ouka.edu.lyseo.mimu")
 
 obj = Player.new("/fi/ouka/edu/lyseo/mimu")
 service.export(obj)
+
+Thread.new do
+  loop do
+    if obj.playing
+      STDERR.puts "TODO: play videos"
+      sleep(1)
+    else
+      sleep(1)
+    end #if
+  end #loop
+end #Thread
 
 puts "mimud listening"
 main = DBus::Main.new
