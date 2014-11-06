@@ -1,0 +1,20 @@
+-if @playlist.empty?
+  | The playlist is empty
+- else
+  form action="/play-pause" method="POST"
+    button name="status" value="play" Play
+    button name="status" value="pause" Pause
+  table
+    tr
+      th ID
+      th YouTube-ID
+      th Delete from playlist
+    - for i in 0...@playlist.length
+      tr
+        td #{i}
+        td #{@playlist[i]}
+        td
+          form action="/playlist/#{i}" method="POST"
+            button name="_method" value="delete" Delete (not implemented)
+    
+      

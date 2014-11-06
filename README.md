@@ -9,8 +9,8 @@ Run ./mimud.rb, preferably within tmux/screen
 
 TODO
 ----
-* A Frontend
 * Implement deletion
+* Add a way for the web frontend to know whether the backend is playing
 * Emit signals when they should be (Trivial except for errorOccurred)
 * Stop playing instantly when status changes to paused (currently plays current video to the end)
 
@@ -49,4 +49,5 @@ Specs
   * Sinatra
   * Slim
   * ruby-dbus
+  * VLC
   
