@@ -10,8 +10,9 @@ Run ./mimud.rb, preferably within tmux/screen
 TODO
 ----
 * A Frontend
+* Implement deletion
 * Emit signals when they should be (Trivial except for errorOccurred)
-* Stop playing instantly when status changes to paused (currently plays current video to the end
+* Stop playing instantly when status changes to paused (currently plays current video to the end)
 
 Specs
 -----
@@ -21,7 +22,7 @@ Specs
   * Delete any video from the playlist,
   * Play, and
   * Pause
-* /playlist/:id removes :id from the playlist, when DELETEd
+* /playlist/:id removes :id from the playlist when DELETEd
 * /play-pause, depending on method:
   * GET: "playing" if playing, "paused" if paused
   * POST: start playing if "play", pause if "pause"
@@ -37,6 +38,7 @@ Specs
 	  * Methods:
 		* play (bool: start playing if true, stop if false)
 		* queue (string: add specified ytid to end of the playlist)
+		* unqueue (int: index to remove from playlist)
 		* getQueueLength (return playlist length, i.e. the largest array index + 1)
 		* getYtid (int: get the ytid that corresponds with the specified index)
 	  * Signals:
