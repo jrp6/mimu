@@ -39,11 +39,12 @@ Specs
 		* play (bool: start playing if true, stop if false)
 		* queue (string: add specified ytid to end of the playlist)
 		* unqueue (int: index to remove from playlist)
-		* getQueueLength (return playlist length, i.e. the largest array index + 1)
+		* getQueueLength (returns int: playlist length, i.e. the largest array index + 1)
 		* getYtid (int: get the ytid that corresponds with the specified index)
+		* getStatus (return bool: status, ie. whether mimu is playing or stopped (true or false))
 	  * Signals:
 		* nowPlaying (string: ytid that has started playing)
-		* statusPlaying (bool: the status has changed to playing/stopped (true/false)
+		* statusChanged (bool: the status has changed to playing/stopped (true/false)
 		* errorOccurred (string: error description)
 * Dependencies:
   * Sinatra

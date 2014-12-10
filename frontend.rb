@@ -35,7 +35,7 @@ post '/playlist' do
 end #post
 
 delete '/playlist/:id' do |id|
-  STDERR.puts "TODO: Implement deletion"
+  @player.unqueue(id.to_i)
   redirect to('/playlist')
 end #delete
 

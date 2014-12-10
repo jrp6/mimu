@@ -30,9 +30,13 @@ class Player < DBus::Object
     end #dbus_method
     dbus_method :queue, "in ytid:s" do |ytid|
       @playlist << ytid
-      if $options[:verbose]
-        STDERR.puts "Added #{ytid} to playlist"
-      end #if
+      STDERR.puts "Added #{ytid} to playlist" if $options[:verbose]
+    end #dbus_method
+    dbus_method :unqueue, "in index:i" do |index|
+      if @playlist.length > index
+        @playlist.delete_at(index)
+        STDERR.puts "Removed item no. #{index} from playlist" if $options[:verbose]
+      end #if # fail silently if the index doesn't exist
     end #dbus_method
     dbus_method :getQueueLength, "out length:i" do
       [@playlist.length]
@@ -40,12 +44,16 @@ class Player < DBus::Object
     dbus_method :getYtid, "in index:i, out ytid:s" do |index|
       if @playlist[index]
         [@playlist[index]]
-      else
+      else # fail silently if the index doesn't exist
         [""]
       end #if
     end #dbus_method
+    dbus_method :getStatus, "out status:b" do
+      [@playing]
+    end #dbus_method
+
     dbus_signal :nowPlaying, "ytid:s"
-    dbus_signal :statusPlaying, "playing:b"
+    dbus_signal :statusChanged, "playing:b"
     dbus_signal :errorOccurred, "error:s"
   end #dbus_interface
 end #class
