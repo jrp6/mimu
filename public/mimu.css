@@ -1,0 +1,33 @@
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    background-color: GhostWhite;
+    margin: 15px 0;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td {
+    padding: 3px;
+}
+
+th {
+    background-color: Gainsboro;
+}
