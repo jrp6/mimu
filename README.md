@@ -17,7 +17,7 @@ TODO
 Specs
 -----
 
-* When GETing /watch?v=:ytid, add video :id to the end of the playlist. (This is _ugly_ and _unRESTful_ but I can't come up with a practical and easy way to make this work using any other method)
+* When GETing /watch?v=:ytid, ask the user whether to add video :ytid to the end of the playlist.
 * /playlist (redirect from /) is an HTML table representation of the playlist, along with buttons to
   * Delete any video from the playlist,
   * Play, and
