@@ -27,6 +27,7 @@ class Player < DBus::Object
       if $options[:verbose]
         STDERR.puts "@playing = #{@playing}"
       end #if
+      self.statusChanged(shouldPlay)
     end #dbus_method
     dbus_method :queue, "in ytid:s" do |ytid|
       @playlist << ytid
@@ -70,7 +71,9 @@ Thread.new do
     if obj.playing
       if obj.playlist.length == 0
         obj.playing = false
+        obj.statusChanged(false)
       else
+        obj.nowPlaying(obj.playlist[0])
         system("vlc --play-and-exit $(youtube-dl -g \"https://www.youtube.com/watch?v=#{obj.playlist.shift}\")")
       end #if
     else
