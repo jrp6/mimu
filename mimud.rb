@@ -16,6 +16,7 @@ class Player < DBus::Object
   def initialize(o)
     super(o)
     @playlist = []
+    @playing = false
   end #def
 
   attr_accessor :playing

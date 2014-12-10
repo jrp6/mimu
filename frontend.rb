@@ -40,8 +40,11 @@ delete '/playlist/:id' do |id|
 end #delete
 
 get '/play-pause' do
-  "I've no idea"
-  #TODO: Implement this
+  if @player.getStatus()[0]
+    "playing"
+  else
+    "paused"
+  end #if
 end #get
 
 post '/play-pause' do
