@@ -5,7 +5,7 @@ Web app that makes the computer running the app play youtube videos in the backg
 
 To run
 ------
-Run ./mimud.rb, preferably within tmux/screen
+Run ./mimud.rb and ./frontend -e production, preferably within tmux/screen
 
 TODO
 ----
