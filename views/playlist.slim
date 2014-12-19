@@ -8,11 +8,13 @@
     tr
       th ID
       th YouTube-ID
+      th Title
       th Delete from playlist
     - for i in 0...@playlist.length
       tr
         td #{i}
-        td #{@playlist[i]}
+        td #{@playlist[i].video_id}
+        td #{@playlist[i].title}
         td
           form action="/playlist/#{i}" method="POST"
             button name="_method" value="delete" Delete

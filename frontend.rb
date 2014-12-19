@@ -3,6 +3,7 @@
 require 'sinatra'
 require 'slim'
 require 'dbus'
+require 'video_info'
 
 before do
   @bus = DBus::SessionBus.instance
@@ -24,7 +25,7 @@ get '/playlist' do
   playlistLength = @player.getQueueLength()[0]
   @playlist = []
   for i in 0...playlistLength
-    @playlist << @player.getYtid(i)[0]
+    @playlist << VideoInfo.new("https://youtube.com/watch?v="+@player.getYtid(i)[0])
   end
   slim :playlist
 end #get
