@@ -51,4 +51,5 @@ Specs
   * Slim
   * ruby-dbus
   * VLC
+  * video_info
   
